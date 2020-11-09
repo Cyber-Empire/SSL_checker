@@ -17,6 +17,17 @@
 		-o-background-size:cover;
 		background-size:cover;
 	}
+	body{
+		background : none;
+	}
+	.container{
+		text-align : center;
+		margin-top:175px;
+		width:450px;
+	
+	}
+	
+	
 	<!--making the background image fix -->
 	</style>
 	
@@ -24,7 +35,16 @@
   <body>
    
    <div class = "container">
-   <h1> what is your URL </h1>
+   <h1 style = "color :white"> What is  your URL ;) </h1>
+   
+   <form>
+  
+  <div class="form-group">
+    <label for="url" style = "color :white">Go ahead type it !</label>
+    <input type="text" class="form-control" id = "url"  name = "url" placeholder="www.Something.com">
+  </div>
+   <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
     </div>
   
 	
