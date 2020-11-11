@@ -1,3 +1,22 @@
+<?php
+  $result = "";
+   $error = "";
+  if($_GET['url']){
+  
+  $urlContents = file_get_contents("https://api.ssllabs.com/api/v3/analyze?host=".urlencode($_GET['url']));
+     $UrlArray = json_decode($urlContents, true);    
+       print_r($UrlArray);
+	   $result = "Result for ".$_GET['url']." is as follows : EngineVersion -> ".$UrlArray['engineVersion']."<br>"; 
+	   $CertificateVersion= $UrlArray['criteriaVersion'];
+	   $result.= "certificate version  ->".$CertificateVersion."<br>";
+	   $ServerName = $UrlArray[1]['ServerName'];
+	   $result.="Servername-> ".$ServerName."<br>";
+	   //here i could not find server name (could not read the data in order they are in an array)
+    } 
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,13 +29,7 @@
 
     <title>SLL_checker</title>
 	<style type="text/css">
-	html{
-		background :url(https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) no-repeat center center fixed ;
-		--webkit-background-size:cover;
-		-moz-background-size:cover;
-		-o-background-size:cover;
-		background-size:cover;
-	}
+	
 	body{
 		background : none;
 	}
@@ -26,6 +39,7 @@
 		width:450px;
 	
 	}
+	
 	
 	
 	<!--making the background image fix -->
@@ -45,6 +59,23 @@
   </div>
    <button type="submit" class="btn btn-primary" >Submit</button>
 </form>
+<div id="output"><?php 
+              
+              if ($result) {
+                  
+                  echo '<div class="alert alert-success" role="alert">
+  '.$result.'
+</div>';
+                  
+              } else if ($error) {
+                  
+                  echo '<div class="alert alert-danger" role="alert">
+  '.$error.'
+</div>';
+                  
+              }
+              
+              ?></div>
     </div>
   
 	
