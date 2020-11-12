@@ -3,15 +3,25 @@
    $error = "";
   if($_GET['url']){
   
-  $urlContents = file_get_contents("https://api.ssllabs.com/api/v3/analyze?host=".urlencode($_GET['url']));
+  $urlContents = file_get_contents("https://api.ssllabs.com/api/v3/analyze?host=".urlencode($_GET['url'])."&startNew=on&all=done");
      $UrlArray = json_decode($urlContents, true);    
        print_r($UrlArray);
-	   $result = "Result for ".$_GET['url']." is as follows : EngineVersion -> ".$UrlArray['engineVersion']."<br>"; 
+	   if($UrlArray['status']== "READY" || "IN_PROGRESS")
+	   {
+	   $result = "Result for --".$_GET['url']." --is as follows :<br>"; 
 	   $CertificateVersion= $UrlArray['criteriaVersion'];
 	   $result.= "certificate version  ->".$CertificateVersion."<br>";
-	   $ServerName = $UrlArray[1]['ServerName'];
-	   $result.="Servername-> ".$ServerName."<br>";
-	   //here i could not find server name (could not read the data in order they are in an array)
+	   $ServerName = $UrlArray['endpoints'][0]['serverName'];
+	   $result.="Servername-> ".$ServerName."br";
+	  $ipadd=$UrlArray['endpoints'][0]['ipAddress'];
+	  $result .= "Ip Address ->".$ipadd."<br>";
+	  $grade = $UrlArray['endpoints'][0]['grade'];
+	  $result .= "possible values: A+, A-, A-F, T (no trust) and M (certificate name mismatch) ->".$grade;
+	   }
+	   else
+	   {
+		   $error = "domain name undefined !";
+	   }
     } 
 
 
