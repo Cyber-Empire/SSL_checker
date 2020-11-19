@@ -1,4 +1,6 @@
 <?php
+
+
 if(isset($_GET['submit']))
 {
  if(empty($_GET['url']))
@@ -10,29 +12,38 @@ if(isset($_GET['submit']))
 	   $urlContents = file_get_contents("https://api.ssllabs.com/api/v3/analyze?host=".$_GET['url']."&all=on");
        $UrlArray = json_decode($urlContents, true); 
 	   //print_r($UrlArray);
-  
-    if($UrlArray ['status']=="READY")
-	   {
-		  echo " All done ! ";
-	   }
-	else
-	   {
-	   echo "please wait ,loading on progress !"."<br>";	
+	   echo"<br>";
 	
-         if(array_key_exists('progress', $UrlArray['endpoints'][0]))
-		 {
-		    echo "Loading on progres [".$UrlArray['endpoints']['0']['progress']."%]loaded !"."<br>";	
-	     }
-         else
-		 {
-			echo"  Here java script must load the page !";
-		 }	   
-	}
+  
   
 	   
+     if($UrlArray ['status']=="READY")
+	    {
+		   echo " All done ! ";
+		   $flag = true ; 
+	
+	    }
+      /*elseif($UrlArray ['status']=="IN_PROGRESS")
+       {
+		     
+	       echo "Loading on progres [".$UrlArray['endpoints']['0']['progress']."%]loaded !"."<br>";	
+	   }*/ 
 	   
-   
-   }
+	   // the problem here is progress , which some times is appearing at first some times not 
+	  
+	  elseif($UrlArray ['status']=="Unable to resolve domain name" || $UrlArray ['status']=="ERROR" || $UrlArray ['status']=="DNS" )
+	  {
+		  echo "Undefined URL!!";
+	  }
+	  else
+	    {
+	       echo "please wait ,loading on progress !"."<br>";
+             header("refresh: 5");
+			 // refreshing the page each 5 second
+ 
+	    }
+  
+	}
 }
 
 ?>
@@ -49,6 +60,7 @@ if(isset($_GET['submit']))
 </style>
 </head>
 <body>
+
 <div class ="main">
   <h1>Enter Your URL</h1>
    <form class="content"  action ="test.php" method="GET">
