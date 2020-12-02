@@ -185,16 +185,97 @@ if(isset($_GET['submit']))
 	text-align:center;
 	margin-top:200px;
 }
+.gif{
+	text-align:center;
+}
+.logo-footer{
+	height :100px;
+	widtgh:100px;
+}
+.world{
+	height :100px;
+	widtgh:100px;
+}
+
+	
+
 	
 </style>
-</head>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/media-queries.css">
 
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+   <a class="navbar-brand" href="https://www.vik.bme.hu/">
+    <img src="https://www.bme.hu/sites/default/files/mediakit/bme_logo_nagy.jpg"  style="width:180px">
+	 <a class="navbar-brand" href="contact_form.php">contact us</a>
+  </a>
+ 
+</nav>
 <div class ="main">
-  <h1>Enter Your URL</h1>
-   <form class="content"  action ="test.php" method="GET">
+  <h1 style="font-family:Fantasy;">Enter your URL<img class = "world" src = "https://cdn.iconscout.com/icon/free/png-512/earth-global-globe-international-map-planet-world-2-12510.png">
+   </h1>
+  <form class="content"  action ="test.php" method="GET">
     <input type="text" name = "url" placeholder = "www.something.com">
-     <button type="submit" name="submit">Check</button>
+     <button  class="btn btn-primary"  type="submit" name="submit">Check</button>
     </form>
 	 </div>
+	 <div class = gif>
+	 <img src = "https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif">
+	 </div>
+	 <!-- Footer -->
+        <footer>
+        	<div class="footer-top">
+		        <div class="container">
+		        	<div class="row">
+		        		<div class="col-md-4 col-lg-4 footer-about wow fadeInUp">
+		        			<img class="logo-footer" src="https://www.bme.hu/sites/default/files/mediakit/bme_logo_nagy.jpg"  >
+		        			<p>
+		        				This is project aim's to check the certifcate of domains and test them to see if the their servers are protected against the different type of cyber attacks .
+		        			</p>
+		        			
+	                    </div>
+		        		<div class="col-md-4 col-lg-4 offset-lg-1 footer-contact wow fadeInDown">
+		        			<h3>Contact</h3>
+		                	<p><i class="fas fa-map-marker-alt"></i> 1111 Budapest,
+Műegyetem rkp. 3.</p>
+		                	<p><i class="fas fa-phone"></i> Phone: +36702605558</p>
+		                	<p><i class="fas fa-envelope"></i> Email: <a href="amiralikhamseh01@gmail.com">amiralikhamseh01@gmail.com</a></p>
+		                	
+	                    </div>
+	                    <div class="col-md-4 col-lg-3 footer-social wow fadeInUp">
+	                    	<h3>Follow us</h3>
+	                    	<p>
+	                    		<a href="https://www.vik.bme.hu/"><i class="fab fa-facebook"></i></a> 
+								<a href="https://www.vik.bme.hu/"><i class="fab fa-twitter"></i></a> 
+								<a href="https://www.vik.bme.hu/"><i class="fab fa-instagram"></i></a> 
+								<a href="https://www.vik.bme.hu/"><i class="fab fa-pinterest"></i></a>
+	                    	</p>
+	                    </div>
+		            </div>
+		        </div>
+	        </div>
+	        <div class="footer-bottom">
+	        	<div class="container">
+	        		<div class="row">
+	           			<div class="col-md-5 footer-copyright">
+	                    	<p>&copy; Amirali Khamseh 2020</p>
+	                    
+	           		</div>
+	        	</div>
+	        </div>
+        </footer>
  </body>
 </html>
